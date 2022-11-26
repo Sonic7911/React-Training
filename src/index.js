@@ -5,14 +5,17 @@ import App from './App';
 import Weather from './components/Weather.js';
 import reportWebVitals from './reportWebVitals';
 import AnimeQuotes from './components/AnimeQuotes';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <div className ="App">
+    <BrowserRouter>
+    <App />
+    {/* <div className ="App">
        <Weather />
-    </div>
-   
+    </div> */}
+   </BrowserRouter>
   </React.StrictMode>
 );
 
