@@ -1,29 +1,42 @@
-// import logo from './logo.svg';
-// import { useEffect, useState } from 'react';
-import './App.css';
-import AnimeQuotes from './components/AnimeQuotes';
-import Weather from './components/Weather';
-import {Route,Routes,Link} from 'react-router-dom';
-
-
-function App() {
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home,{fetch} from "./Route/Home";
+import Root from "./Route/Root";
+import About from "./Route/About";
+import Post, { postLoader } from "./Route/Post";
+import NewPost, { submitPost } from "./Route/NewPost";
+import "./App.css";
+export default function App()
+{
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element:<Root />,
+      children: [
+        {
+          path : '/',
+          element: <Home />,
+          loader: fetch
+        },
+      
+        {
+          path :'/about',
+          element :<About />
+        },
+        {
+          path :'/new',
+          element: <NewPost />,
+          action: submitPost,
+        },
+        {
+          path: '/post/:id',
+          element: <Post />,
+          loader: postLoader
+        }
+      ]
+    }
+  ]
+  )
   return(
-    <div>
-      <h1>Home Page</h1>
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/quotes">Anime Quotes</Link></li>
-          <li><Link to="/weather">Weather</Link></li>
-        </ul>
-      </nav>
-      <Routes>
-        <Route path="/weather" element ={<Weather/>}/>
-        <Route path= "/quotes" element ={<AnimeQuotes/>}/>
-      </Routes>
-    </div>
+    <RouterProvider router = {router}/>
   )
 }
-
-export default App;
