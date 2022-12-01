@@ -12,8 +12,13 @@ export default function Post()
 {
     const post = useLoaderData();
     return(
+        <>
         <h1>{post.title}
         </h1>
+        <h3 className="contentho">
+            {post.content}
+        </h3>
+        </>
         
     )
 }
