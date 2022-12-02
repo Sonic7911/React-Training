@@ -12,10 +12,7 @@ root.render(
   <React.StrictMode>
     
     <App />
-    {/* <div className ="App">
-       <Weather />
-    </div> */}
-   
+    
   </React.StrictMode>
 );
 
